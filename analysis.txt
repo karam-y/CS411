@@ -1,0 +1,10 @@
+Architecture/Platform
+------------------------
+
+Platform:
+
+We plan to use Bootstrap for our front end, Express JS as our middleware, Node.js for our backend, and Mongo as our storage database. We choose to use this platform instead of one that includes a relational database backend like mySQL since our application needs to be able to handle numerous requests quickly and be able to process information in real time. Since our application needs to keep track of user status and sales, we need to be able to inform users of requests, deliveries, cancellations, and charges in real time under large work loads without system failures. Therefore, it is better for performance and the goals of our application to use a platform. 
+
+Architecture:
+
+We plan to use a multi-tier client server architecture. This is because we want to model our application with a front end client and be able to split up the back-end workload to handle numerous requests. We need our server and database to be seperated to handle user info, requests, transactions, cancellations.
