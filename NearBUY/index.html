@@ -33,6 +33,13 @@
 
   <body>
 
+    <!-- Need these scripts to make the dropdowns work -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -42,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Search</a>
+          <a class="navbar-brand" href="#">NearBuy</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
@@ -61,34 +68,35 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>NearBuy</h1>
-        <p>Search for nearby locations to buy from</p>
-        <input type="text" class="form-control" placeholder="Search...">
-        <div class="row"></div>
+        <h1>Search</h1>
+        <p>Enter in search criteria to find locations near you</p>
+
+        <!-- Search bar -->
+        <p><input type="text" class="form-control" placeholder="Search for places/things to shop"></p>
+
+        <!-- Address bar -->
+        <p><input type="text" class="form-control" placeholder="Enter Address here"></p>
+
+        <!-- Dropdown options for radius -->
+        <p>
+        <div class="form-group">
+          <label for="sel1">Mile Radius:</label>
+          <select class="form-control" id="sel1">
+            <option>5</option>
+            <option>10</option>
+            <option>15</option>
+          </select>
+        </div>
+        </p>
+
+        <!-- Search button -->
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Search &raquo;</a></p>
 
       </div>
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <!-- <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div> -->
+
       <!-- Call a method here that does work and returns rows -->
       <div class="row">
         <h2>Result 1</h2>
@@ -101,6 +109,7 @@
       </div>
 
       <hr>
+
 
       <footer>
         <p>&copy; 2016 Group 3, Inc.</p>
