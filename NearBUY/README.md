@@ -8,8 +8,8 @@
 $npm install angular —save
 ```
 3. Third, for the pure front end. Install bootstrap. You can install this here: <http://getbootstrap.com/getting-started/#download>
-⋅⋅*Install the package with the link Download Bootstrap. We want the compiled version. When you download you get a folder with three subfolders: css, fonts, js. 
-⋅⋅* PUT THESE FOLDERS IN THE SAME DIRECTORY AS YOUR PROJECT LOCATION. 
+*Install the package with the link Download Bootstrap. We want the compiled version. When you download you get a folder with three subfolders: css, fonts, js. 
+* PUT THESE FOLDERS IN THE SAME DIRECTORY AS YOUR PROJECT LOCATION. 
 4. Fourth, I HIGHLY HIGHLY HIGHLY suggest you download some sort of text editor. I use [sublime] and its super easy but if you find one that suits you stick with it. 
 [sublime]: https://www.sublimetext.com
 
