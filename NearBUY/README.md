@@ -2,15 +2,13 @@
 ######by Jackie :)
 
 ##Installing:
-1. First you will need to install npm (npm is basically contains everything that contains all the javascript libraries and stuff we’ll need). Download and install here: <https://nodejs.org/en/>
-2. Second, for this project we are using angular as our middleware. To install angular in your terminal write the command: 
+* First you will need to install npm (npm is basically contains everything that contains all the javascript libraries and stuff we’ll need). Download and install here: <https://nodejs.org/en/>
+* Second, for this project we are using angular as our middleware. To install angular in your terminal write the command: 
 ```
 $npm install angular —save
 ```
-3. Third, for the pure front end. Install bootstrap. You can install this here: <http://getbootstrap.com/getting-started/#download>
-*Install the package with the link Download Bootstrap. We want the compiled version. When you download you get a folder with three subfolders: css, fonts, js. 
-* PUT THESE FOLDERS IN THE SAME DIRECTORY AS YOUR PROJECT LOCATION. 
-4. Fourth, I HIGHLY HIGHLY HIGHLY suggest you download some sort of text editor. I use [sublime] and its super easy but if you find one that suits you stick with it. 
+* Third, for the pure front end. Install bootstrap. You can install this here: <http://getbootstrap.com/getting-started/#download>.Install the package with the link Download Bootstrap. We want the compiled version. When you download you get a folder with three subfolders: css, fonts, js. PUT THESE FOLDERS IN THE SAME DIRECTORY AS YOUR PROJECT LOCATION. 
+* Fourth, I HIGHLY HIGHLY HIGHLY suggest you download some sort of text editor. I use [sublime] and its super easy but if you find one that suits you stick with it. 
 [sublime]: https://www.sublimetext.com
 
 ##Set up Environment:
