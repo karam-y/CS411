@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<!-- sets up angular -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-<!-- style sheets -->
+<script src="https://raw.githubusercontent.com/bettiolo/oauth-signature-js/master/dist/oauth-signature.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- include javascript files -->
 <script type="text/javascript" src="app.js"></script>
 
 <title>NearBuy - Search</title>
@@ -19,29 +14,21 @@
   <div class="jumbotron">
     <div class="container">
       <h3>Search</h3>
-
       <form>
 
         <!-- this is to search topics -->
         <p><input type="text" placeholder="Search for places/things to buy" ng-model="keywords" class="form-control" ng-required="required"></p>
 
         <!-- this is to enter an address -->
-        <p>
-        <div class="input-group">
-        <input type="text" placeholder="Enter in an address" ng-model="address" class="form-control" ng-required="required">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-click="verify()">Verify<button>
-        </span>
-        </div>
-      </p>
+        <p><input type="text" placeholder="Enter in an address" ng-model="address" class="form-control" ng-required="required"></p>
 
         <!-- enter in a mile radius -->
         <p>
-        Meter Radius:
+        Mile Radius:
         <select ng-model="radius" ng-required="required">
-            <option value="100">100
-            <option value="200">200
-            <option value="300">300
+            <option value="5">5
+            <option value="10">10
+            <option value="15">15
         </select>
         </p>
 
@@ -49,19 +36,11 @@
         <button id="getResults" ng-click="submit()">Find places near me!</button>
 
       </form>
-    </div>
-  </div>
 
-  <!-- output the results below the jumbotron -->
-  <div class="well" ng-repeat="x in searchResults">
-    <h2>{{ x.name }}</h2>
-      <p>
-        {{ x.formatted_address }}
-      </p>
-      <p>
-        {{ "Rating: " + x.rating }}
-      </p>
-    <a class="btn btn-default" href="#" role="button">Order Here »</a>
+      <pre>keywords = {{keywords}}</pre>
+      <pre>address = {{address}}</pre>
+      <pre>radius = {{radius}}</pre>
+    </div>
   </div>
 </div>
 
