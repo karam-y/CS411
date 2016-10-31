@@ -23,7 +23,7 @@ app.controller('searchCtrl', function($scope, $http, $q, $timeout) {
 
         var placesURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?" +
             "&query=" + $scope.keywords + "&location=" + $scope.coordinates +
-            "&radius=" + $scope.radius + "&key=key here";
+            "&radius=" + $scope.radius + "&key=xxx";
 
         console.log('Run submit URL: ' + placesURL);
 
@@ -41,7 +41,7 @@ app.controller('searchCtrl', function($scope, $http, $q, $timeout) {
         console.log('Run find coordinates');
 
         var coordinateURL = 'https://maps.googleapis.com/maps/api/geocode/json?' + 
-        "&address=" + $scope.address + "&key=key here";
+        "&address=" + $scope.address + "&key=xxx";
 
         console.log('Run coordinate URL: ' + coordinateURL);
 
