@@ -13,34 +13,27 @@ app.controller('searchCtrl', function($scope, $http, $q, $timeout) {
     $scope.address = "";
     $scope.radius = "";
     $scope.coordinates = "";
-    this.verify = false;
+    $scope.notVerified = true;
 
-    $scope.submit = function(callback) {
+    $scope.change = function () {
+        $scope.notVerified = true;
+    }
 
-        //callback && callback();
-
-        // console.log('Run submit');
-
+    $scope.submit = function() {
 
         var placesURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?" +
             "&query=" + $scope.keywords + "&location=" + $scope.coordinates +
-            "&radius=" + $scope.radius + "&key=getthekey";
+            "&radius=" + $scope.radius + "&key=key here";
 
         console.log('Run submit URL: ' + placesURL);
-        // $timeout(10000);
 
         $http.get(placesURL).
         then(function(response)
         {
             var dataOutput = response.data.results;
-            // console.log(dataOutput);
-            // console.log(dataOutput[0]);
             $scope.searchResults = dataOutput;
         }
         );
-
-        // console.log('Finished submit')
-        // $timeout(10000);
     }
 
     $scope.verify = function() {
@@ -48,7 +41,7 @@ app.controller('searchCtrl', function($scope, $http, $q, $timeout) {
         console.log('Run find coordinates');
 
         var coordinateURL = 'https://maps.googleapis.com/maps/api/geocode/json?' + 
-        "&address=" + $scope.address + "&key=getthekey";
+        "&address=" + $scope.address + "&key=key here";
 
         console.log('Run coordinate URL: ' + coordinateURL);
 
@@ -65,16 +58,8 @@ app.controller('searchCtrl', function($scope, $http, $q, $timeout) {
             console.log('Finished coordinates')
         });
 
+        $scope.notVerified = false;
+
     }
 
 });
-
-
-// $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
-//         then(function(response) {
-//           $scope.status = response.status;
-//           $scope.data = response.data;
-//         }, function(response) {
-//           $scope.data = response.data || 'Request failed';
-//           $scope.status = response.status;
-//       });
