@@ -41,23 +41,8 @@
 
       <!-- this is to enter an address -->
         <p>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Enter in an address" placeholder="Enter in an address" ng-required="required" ng-model="address" ng-change="change()">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button" ng-click="verify()">Verify</button>
-          </span>
-        </div>
+          <input type="text" class="form-control" placeholder="Enter in an address" placeholder="Enter in an address" ng-required="required" ng-model="address">
         </p>
-
-        <!-- enter in a mile radius -->
-          <p>
-          Meter Radius:
-          <select ng-model="radius" ng-required="required">
-              <option value="100">100
-              <option value="200">200
-              <option value="300">300
-          </select>
-          </p>
 
         <!-- this is the button to submit -->
           <button id="getResults" ng-click="submit()">Find places near me!</button>
@@ -75,13 +60,17 @@
   <!-- output the results below the jumbotron -->
   <div class="well" ng-repeat="x in searchResults">
     <h2>{{ x.name }}</h2>
-      <p>
+      <h2>{{ x.id }}</h2>
+      <!-- <p>
         {{ x.formatted_address }}
       </p>
       <p>
         {{ "Rating: " + x.rating }}
-      </p>
-    <a class="btn btn-default" href="#" role="button">Order Here »</a>
+      </p> -->
+    <form method="link" action="order.html">
+      <input type="hidden" value="{{ x.id }}" name="business_id">
+      <button type="submit">Order Here »</button>
+    </form>
   </div>
 </div>
 
