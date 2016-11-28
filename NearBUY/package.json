@@ -1,0 +1,12 @@
+// install all these modules in root project folder
+{
+  "name": "starter-node-angular",
+  "main": "server.js",
+  "dependencies": {
+    "express" : "~4.5.1",
+	"mongoose" : "~4.7.0",
+	"body-parser" : "~1.4.3",
+	"method-override" : "~2.0.2"
+  }
+}
+

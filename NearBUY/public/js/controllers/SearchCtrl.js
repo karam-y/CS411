@@ -1,29 +1,18 @@
-//to be used for google maps api
-var map;
-var service;
-var infowindow;
-
-// define the module
-var app = angular.module('nearBuy', []);
 
 //define the controller
-app.controller('searchCtrl', function($scope, $http, $q, $timeout) {
-	//used in search criteria
+angular.module('SearchCtrl', []).controller('SearchController', function($scope, $http, $q, $timeout) {
+
+    //used in search criteria
     $scope.keywords = "";
     $scope.address = "";
     $scope.radius = "";
     $scope.coordinates = "";
-    $scope.notVerified = true;
-
-    $scope.change = function () {
-        $scope.notVerified = true;
-    }
 
     $scope.submit = function() {
 
         var placesURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?" +
             "&query=" + $scope.keywords + "&location=" + $scope.coordinates +
-            "&radius=" + $scope.radius + "&key=AIzaSyBsTAjge0lRGrWRkJvgDbH7s6-OFy7hnRo";
+            "&radius=" + $scope.radius + "&key=";
 
         console.log('Run submit URL: ' + placesURL);
 
@@ -41,7 +30,7 @@ app.controller('searchCtrl', function($scope, $http, $q, $timeout) {
         console.log('Run find coordinates');
 
         var coordinateURL = 'https://maps.googleapis.com/maps/api/geocode/json?' + 
-        "&address=" + $scope.address + "&key=AIzaSyBsTAjge0lRGrWRkJvgDbH7s6-OFy7hnRo";
+        "&address=" + $scope.address + "&key=";
 
         console.log('Run coordinate URL: ' + coordinateURL);
 
