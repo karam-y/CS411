@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Find Requests</title>
+
+    <!-- sets up angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <!-- This is the only thing that works to make it pretty -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <body>
+        <!-- make a navigation bar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">NearBuy</a>
+            </div>
+          </div>
+        </nav>
+
+    <div>
+      <div class="jumbotron">
+        <div class="container">
+          <!-- Search instructions -->
+          <h1>Find Requests</h1>
+          <p> 
+            This is where you can search places to fulfill requests from. Enter in city and state OR enter in the zipcode to find requests.
+          </p>
+
+          <!-- to search by city or state -->
+        <form>
+            <input type="text" placeholder="Enter in City" name="state" class="form-control" required>
+
+            <input type="text" placeholder="Enter in State" name="state" class="form-control" required>
+
+            <!-- this is the button to submit -->
+            <button id="getResults" ng-click="submit()">Find requests near me!</button>
+        </form>
+
+        <p></p>
+        <p>OR</p>
+
+        <form>
+            <input type="text" placeholder="Enter in Zipcode" name="zipcode" class="form-control" required>
+
+            <!-- this is the button to submit -->
+            <button id="getResults" ng-click="submit()">Find requests near me!</button>
+        </form>
+
+        <form>
+        </form>
+    </body>
+</head>
+
+
