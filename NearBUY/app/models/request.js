@@ -16,7 +16,8 @@ var RequestSchema = new Schema({
 	delivery_address: String,
 	delivery_city: String,
 	delivery_state: String,
-	delivery_zip: String
+	delivery_zip: String,
+	business_id: String
 });
 
 module.exports = mongoose.model('Requests', RequestSchema, 'requests');
