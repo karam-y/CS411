@@ -204,14 +204,13 @@ router.route('/accept')
 			});
 
 		});
-		// doesnt work
-		// Request.update(conditions, update, function(err, count) {
-		// 	if (err) {
-		// 		return err;
-		// 	}
-		// 	res.json({message: 'Request updated'})
-		// });
 	})	
+
+// delete/cancel a request
+router.route('/cancel')
+	.delete(function(req, res) {
+
+	})
 
 //add the square api route
 router.route('/payment')
@@ -294,6 +293,7 @@ router.route('/tracking/:email')
 			}
 		});
 	})
+
 
 
 
