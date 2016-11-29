@@ -115,6 +115,34 @@ router.route('/search_results/:address/:keywords')
 		);
 	})
 
+//find available requests in the database by city and state
+router.route('/find_results/:city/:state')
+	.get(function(req, res){
+		Request.find({ delivery_city: req.params.city, delivery_state: req.params.state}).limit(20).exec( function(err, data) {
+			if (err) {
+				return err;
+			} else {
+				res.json(data);
+				console.log(data);
+			}
+		});
+	})
+
+//find available requests in the database by zipcode
+router.route('/find_results/:zipcode')
+	.get(function(req, res){
+
+		console.log(req.params.zipcode);
+		Request.find({ delivery_zip: req.params.zipcode}).limit(20).exec( function(err, data) {
+			if (err) {
+				return err;
+			} else {
+				res.json(data);
+				console.log(data);
+			}
+		});
+	})
+
 //add a request to the database
 router.route('/request')
 	.post(function(req, res){
