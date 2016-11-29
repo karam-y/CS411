@@ -115,22 +115,23 @@
             <!-- output the results below the jumbotron -->
       <div class="well" ng-repeat="request in searchResults">
         <h2>Name of business request</h2>
-          <p><strong>Delivery Address</strong></p>
-          <p> {{ request.delivery_address }} </p>
-          <p> {{ request.delivery_city }} </p>
-          <p> {{ request.delivery_state }} </p>
-          <p> {{ request.delivery_zip }} </p>
+          <p><strong>Delivery Address</strong></br>
+          {{ request.delivery_address }}</br>
+          {{ request.delivery_city }}</br>
+          {{ request.delivery_state }}</br>
+          {{ request.delivery_zip }} </p>
 
-          <p><strong>Requested Items</strong></p>
+          <p><strong>Requested Items</strong>
           <div ng-repeat="x in request.items">
-              <p> {{ x.name }} </p>
+              {{ x.name }}</br>
           </div>
+          </p>
 
-          <p><strong>Additional Notes</strong></p>
-          <p> {{ request.notes }} </p>
+          <p><strong>Additional Notes</strong></br>
+           {{ request.notes }}</br>
+          </p>
 
-          <p><strong>Offer</strong></p>
-          <p> {{ request.price }}</p>
+          <p><strong>Offer: </strong> {{request.price }} </p>
           <!-- <p>
             {{ x.formatted_address }}
           </p>
