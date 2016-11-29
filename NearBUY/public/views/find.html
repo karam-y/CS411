@@ -26,7 +26,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="home.html">NearBuy</a>
+              <a class="navbar-brand" href="../index.html">NearBuy</a>
             </div>
           </div>
         </nav>
@@ -142,7 +142,7 @@
           <p>
             {{ "Rating: " + x.rating }}
           </p> -->
-        <form method="link" action="order.html">
+        <form method="link" action="#"> <!-- do this part -->
           <input type="hidden" value="{{ x.id }}" name="business_id">
           <button type="submit">Accept Request»</button> <!-- do a ng-click here -->
         </form>
