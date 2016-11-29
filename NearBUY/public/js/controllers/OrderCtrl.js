@@ -48,7 +48,7 @@ angular.module('OrderCtrl', []).controller('OrderController', function($scope, $
 
 	$scope.addItem = function() {
 		console.log($scope.newItem);
-		$scope.list.push({ 'name' : $scope.newItem, 'done': false});
+		$scope.list.push({ 'name' : $scope.newItem });
 		$scope.newItem = '';
 	}
 
