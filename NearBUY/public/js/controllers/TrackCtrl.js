@@ -15,7 +15,8 @@ angular.module('TrackCtrl', []).controller('TrackController', function($scope, $
             })
 
             $scope.searchResults = result.data; //contains array of request
-            console.log("search: " + $scope.searchResults); //arra
+            // console.log(result.data);
+            // console.log("search: " + $scope.searchResults); //arra
 
             $scope.businesses = [];
 
@@ -24,7 +25,9 @@ angular.module('TrackCtrl', []).controller('TrackController', function($scope, $
                     promises.push($http.get('/api/search_results/' + result.data[i].business_id)
                         .then(function(response) {
                             // console.log(response);
-                            $scope.businesses.push(response.data);
+                            var merged_results = angular.extend({}, result.data[i], response.data);
+                            // console.log(result.data[i]);
+                            $scope.businesses.push(merged_results);
                         }));
                 })(i)
             }
