@@ -19,4 +19,4 @@ var RequestSchema = new Schema({
 	delivery_zip: String
 });
 
-module.exports = mongoose.model('Requests', RequestSchema);
+module.exports = mongoose.model('Requests', RequestSchema, 'requests');
