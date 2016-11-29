@@ -17,7 +17,7 @@ window.onload = function () {
     	if (this.readyState == 4 && this.status == 200) {
     		var data = JSON.parse(http.responseText);
     		document.getElementById('here').innerHTML = data.name; //this is the response text
-
+    		var business_id = data.id; //keeps track of the id for database entry
     		console.log(data)
     	}
     }
@@ -39,6 +39,12 @@ angular.module('OrderCtrl', []).controller('OrderController', function($scope, $
 	$scope.city = '';
 	$scope.state = '';
 	$scope.zip = '';
+	$scope.email = '';
+
+
+	console.log($scope.business_id);
+
+	//transaction id?
 
 	$scope.addItem = function() {
 		console.log($scope.newItem);
@@ -58,14 +64,28 @@ angular.module('OrderCtrl', []).controller('OrderController', function($scope, $
 
 	$scope.addRequest = function() {
 		var id = Math.floor((Math.random()*100000)+1); //transaction id CHANGE THIS LATER
-		var buyer_id = 1; //user id for buyer CHANGE THIS LATER
+		var buyer_id = $scope.email; //user id for buyer CHANGE THIS LATER
 		var address = $scope.address_1 + " " + $scope.address_2;
 
 		console.log("adding request to database");
+		
+		var url = document.location.href,
+	        params = url.split('?')[1].split('&'),
+	        data = {}, tmp;
+	    for (var i = 0, l = params.length; i < l; i++) {
+	         tmp = params[i].split('=');
+	         data[tmp[0]] = tmp[1];
+	    }
+
+	    var extension = params.toString();
+	    var business_id = extension.split("=")[1];
+
+	    console.log(business_id);
+
 		$http({
 		  url: '/api/request', 
 		  method: "POST",
-		  data: {list: $scope.list, notes: $scope.notes, price: $scope.total, id: id, buyer_id: buyer_id, delivery_address: address, delivery_city: $scope.city, delivery_state: $scope.state, delivery_zip: $scope.zip}
+		  data: {business_id: business_id, list: $scope.list, notes: $scope.notes, price: $scope.total, id: id, buyer_id: buyer_id, delivery_address: address, delivery_city: $scope.city, delivery_state: $scope.state, delivery_zip: $scope.zip}
 		}).then(function successCallback(response) {
 		    // this callback will be called asynchronously
 		    // when the response is available
