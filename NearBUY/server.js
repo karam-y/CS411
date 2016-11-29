@@ -141,7 +141,7 @@ router.route('/search_results/:business_id')
 //find available requests in the database by city and state
 router.route('/find_results/:city/:state')
 	.get(function(req, res){
-		Request.find({ delivery_city: req.params.city, delivery_state: req.params.state}).limit(20).exec( function(err, data) {
+		Request.find({ delivery_city: req.params.city, delivery_state: req.params.state, open: true}).limit(20).exec( function(err, data) {
 			if (err) {
 				return err;
 			} else {
@@ -156,7 +156,7 @@ router.route('/find_results/:zipcode')
 	.get(function(req, res){
 
 		console.log(req.params.zipcode);
-		Request.find({ delivery_zip: req.params.zipcode}).limit(20).exec( function(err, data) {
+		Request.find({ delivery_zip: req.params.zipcode, open: true}).limit(20).exec( function(err, data) {
 			if (err) {
 				return err;
 			} else {
@@ -179,6 +179,7 @@ router.route('/request')
 		request.delivery_city = req.body.delivery_city;
 		request.delivery_state = req.body.delivery_state;
 		request.delivery_zip = req.body.delivery_zip;
+		request.business_id = req.body.business_id;
 
 		request.save(function(err) {
 			if (err)
