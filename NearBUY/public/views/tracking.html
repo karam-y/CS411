@@ -27,23 +27,34 @@
   </div>
 </nav>
 
+<div ng-app="TrackCtrl" ng-controller="TrackController">
 <div class="jumbotron">
     <div class="container">
 		<h2>Order Status</h2>
 		<p>Enter in your email to find all open requests</p>
 		<form>
-            <input type="text" placeholder="Enter in Email" ng-model= "email" name="email" class="form-control" required>
+            <input type="text" placeholder="Enter in Email" ng-model= "email" name="email"class="form-control" required>
 
             <!-- this is the button to submit -->
-            <button id="getResults">Find my requests</button>
+            <button id="getResults" ng-click="findOrders()">Find my requests</button>
 
         </form>
 	</div>
 </div>
 
+<div class="well" ng-repeat="x in searchResults">
+    <!-- <h2>{{ findBusiness(x.business_id) }}</h2> -->
+</div>
+
 <p>Oh no! We havent found anything yet</p>
 
 <input type="button" value="Cancel Request" class="btn btn-primary"></input>
+
+</div>
+
+<script type="text/javascript" src="../js/app.js"></script>
+<script type="text/javascript" src="../js/appRoutes.js"></script>
+<script type="text/javascript" src="../js/controllers/TrackCtrl.js"></script>
 
 </body>
 </html>
