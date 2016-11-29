@@ -63,7 +63,6 @@
   <!-- output the results below the jumbotron -->
   <div class="well" ng-repeat="x in searchResults">
     <h2>{{ x.name }}</h2>
-      <p>{{ x.id }}</p>
       <p><strong>Business Address<strong></br>
       <div ng-repeat="y in x.location.display_address">
         {{ y }}</br>

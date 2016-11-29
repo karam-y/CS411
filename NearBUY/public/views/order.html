@@ -27,13 +27,13 @@
   </div>
 </nav>
 <p></p>
-<div>
+<div ng-app="OrderCtrl" ng-controller="OrderController">
   <div class="jumbotron">
     <div class="container">
 
 
       <!-- Search instructions -->
-      <h1>Order</h1>
+      <h1>Order from: </h1><h1 id="here"></h1>
       <p> 
         To order from this place enter in the list below.
       </p>
@@ -43,7 +43,7 @@
   <h3> Shopping list </h3>
   <p>Please enter in a shopping list below</p>
 
-<div ng-app="OrderCtrl" ng-controller="OrderController" ng-init="list=[]">
+<div>
     <input type="text" ng-model="newItem" placeholder="Enter in an item" required />
     <p><button ng-click="addItem()" class="btn btn-primary">Add</button></p>
 
