@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 
-<title>NearBuy - Ordering</title>
+<title>Track Order</title>
 
 </head>
 <body>
@@ -30,6 +30,14 @@
 <div class="jumbotron">
     <div class="container">
 		<h2>Order Status</h2>
+		<p>Enter in your email to find all open requests</p>
+		<form>
+            <input type="text" placeholder="Enter in Email" ng-model= "email" name="email" class="form-control" required>
+
+            <!-- this is the button to submit -->
+            <button id="getResults">Find my requests</button>
+
+        </form>
 	</div>
 </div>
 
