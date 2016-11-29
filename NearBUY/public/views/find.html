@@ -142,9 +142,9 @@
           <p>
             {{ "Rating: " + x.rating }}
           </p> -->
-        <form method="link" action="#"> <!-- do this part -->
-          <input type="hidden" value="{{ x.id }}" name="business_id">
-          <button type="submit">Accept Request»</button> <!-- do a ng-click here -->
+        <form method="link"> <!-- do this part (put action)--> 
+          <input type="text" placeholder="Enter in an email" ng-model="email" required>
+          <button type="submit" ng-click="acceptRequest(request._id, email)">Accept Request»</button> <!-- do a ng-click here -->
         </form>
       </div>
     </body>

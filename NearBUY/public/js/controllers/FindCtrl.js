@@ -38,4 +38,26 @@ angular.module('FindCtrl', []).controller('FindController', function($scope, $ht
 		    console.log("error in GET");
 		});
 	}
+
+	$scope.acceptRequest = function(id, seller_id) {
+		console.log(id);
+		console.log(seller_id);
+
+		$http({
+			url: '/api/accept',
+			method: "POST",
+			data: {request_id: id, seller_id: seller_id}
+		}).then(function successCallback(response) {
+		    // this callback will be called asynchronously
+		    // when the response is available
+		    console.log(response);
+		    console.log("successful post");
+		}, function errorCallback(response) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		    console.log(response);
+		    console.log("error in post");
+		});
+	}
+
 });
