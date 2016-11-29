@@ -1,3 +1,32 @@
+window.onload = function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+    console.log(url);
+    console.log(params);
+    console.log(data);
+    //document.getElementById('here').innerHTML = data.business_id;
+
+    var http = new XMLHttpRequest();
+
+    http.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+    		var data = JSON.parse(http.responseText);
+    		document.getElementById('here').innerHTML = data.name; //this is the response text
+
+    		console.log(data)
+    	}
+    }
+    var url = "/api/search_results/" + data.business_id;
+    http.open("GET", url, true);
+    http.send();
+}
+
+
 angular.module('OrderCtrl', []).controller('OrderController', function($scope, $http, $q, $timeout) {
 
 	//variables to hold the skills
