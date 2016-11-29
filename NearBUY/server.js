@@ -8,6 +8,12 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var mongoose       = require('mongoose');
+var Yelp = require('yelp');
+var unirest = require('unirest'); //for square api
+var base_url = "https://connect.squareup.com/v2";
+
+var keys = require("../config.json"); //this file stores all api keys
+
 
 //Setting up the database
 // config files
@@ -26,6 +32,7 @@ var port = process.env.PORT || 8080;        // set our port
 
 //define the database files
 var Users = require('./app/models/users');
+var Request = require('./app/models/request');
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -83,6 +90,120 @@ router.route('/users')
 			res.json(user);
 		});
 	})
+
+//add the yelp api route
+router.route('/search_results/:address/:keywords')
+
+	//get the results of the query
+	.get(function(req, res) {
+		var yelp = new Yelp({
+			  consumer_key: keys.yelp_consumer_key,
+			  consumer_secret: keys.yelp_consumer_secret,
+			  token: keys.token,
+			  token_secret: keys.token_secret
+		})
+
+		yelp.search({ term: req.params.keywords, location: req.params.address, limit: 3, sort: 1})
+			.then(function (data) {
+		  		res.json(data);
+		  		console.log("Yelp succeeded");
+			})
+			.catch(function (err) {
+		  		console.error(err);
+		  		console.log("Yelp failed");
+			}
+		);
+	})
+
+//add a request to the database
+router.route('/request')
+	.post(function(req, res){
+		var request = new Request(); //create new instance of User module
+		request._id = req.body.id; 
+		request.items = req.body.list;
+		request.price = req.body.price; 
+		request.notes = req.body.notes;
+		request.buyer_id = req.body.buyer_id;
+		request.delivery_address = req.body.delivery_address;
+		request.delivery_city = req.body.delivery_city;
+		request.delivery_state = req.body.delivery_state;
+		request.delivery_zip = req.body.delivery_zip;
+
+		request.save(function(err) {
+			if (err)
+				res.send(err);
+			res.json({message: 'Request created!'})
+		});
+	})
+
+//add the square api route
+router.route('/payment')
+
+	//send payment information and save payment
+	.post(function(req, res){
+		var location;
+		var request_params = req.body;
+		var accessToken = keys.square_token; //sandbox api
+
+		unirest.get(base_url + '/locations')
+		.headers({
+			'Authorization': 'Bearer ' + accessToken,
+			'Accept': 'application/json'
+		})
+		.end(function(response) {
+			for (var i = response.body.locations.length - 1; i >= 0; i--) {
+				if (response.body.locations[i].capabilities.indexOf("CREDIT_CARD_PROCESSING") > -1) {
+					location = response.body.locations[i];
+					break;
+				}
+				if (i == 0) {
+					return res.json({status: 400, error: [{"detail": "No locations have credit card processing available."}]})
+				}
+			}
+
+			var token = require('crypto').randomBytes(64).toString('hex');
+			//var transaction_id = require('crypto').randomBytes(64).toString('hex');
+
+			// check if price is valid
+			if (request_params.price < 0) {
+				return res.json({status: 400, error: [{"detail": "Invalid Price Range"}] })
+			}
+			
+			request_body = {
+				'idempotency_key': token,
+				'card_nonce': request_params.nonce,
+				'amount_money' : {
+					amount: parseInt(request_params.price),
+					currency: "USD"
+				},
+				reference_id: request_params.transaction_id,
+				buyer_email_address: request_params.user_email,
+				delay_capture: true //used to delay the transaction
+			}
+
+			console.log(request_body);
+
+			unirest.post(base_url + '/locations/' + location.id + '/transactions')
+			.headers({
+				'Authorization': 'Bearer ' + accessToken,
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			})
+			.send(request_body)
+			.end(function(response){
+				if (response.body.errors) {
+					console.log('here');
+					res.json({status:400, errors: response.body.errors})
+				} else {
+					res.json({status:200})
+				}
+			})
+
+		})
+		
+	})
+
+
 
 
 
