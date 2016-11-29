@@ -255,6 +255,21 @@ router.route('/payment')
 		
 	})
 
+//find available requests in the database by zipcode
+router.route('/tracking/:email')
+	.get(function(req, res){
+
+		console.log(req.params.email);
+		Request.find({ buyer_id : req.params.email }).exec( function(err, data) {
+			if (err) {
+				return err;
+			} else {
+				res.json(data);
+				console.log(data);
+			}
+		});
+	})
+
 
 
 
