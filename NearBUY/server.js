@@ -103,7 +103,7 @@ router.route('/search_results/:address/:keywords')
 			  token_secret: keys.token_secret
 		})
 
-		yelp.search({ term: req.params.keywords, location: req.params.address, limit: 3, sort: 1})
+		yelp.search({ term: req.params.keywords, location: req.params.address, limit: 20})
 			.then(function (data) {
 		  		res.json(data);
 		  		console.log("Yelp succeeded");
