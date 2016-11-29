@@ -42,13 +42,13 @@
 	</div>
 </div>
 
-<div class="well" ng-repeat="x in searchResults">
-    <!-- <h2>{{ findBusiness(x.business_id) }}</h2> -->
+<div class="well" ng-repeat="x in businesses">
+    <h2>{{ x.name }}</h2>
+    <h2>{{ x.price }}</h2>
+
+    <input type="button" value="Cancel Request" class="btn btn-danger"></input>
+
 </div>
-
-<p>Oh no! We havent found anything yet</p>
-
-<input type="button" value="Cancel Request" class="btn btn-primary"></input>
 
 </div>
 
