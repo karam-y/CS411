@@ -188,6 +188,31 @@ router.route('/request')
 		});
 	})
 
+//add a request to the database
+router.route('/accept')
+	.post(function(req, res){
+
+		Request.findById(req.body.request_id, function (err, request) {
+			if (err) return err;
+
+			request.open = false;
+			request.seller_id = req.body.seller_id;
+
+			request.save(function(err, updatedRequest) {
+				if (err) return err;
+				res.send(updatedRequest);
+			});
+
+		});
+		// doesnt work
+		// Request.update(conditions, update, function(err, count) {
+		// 	if (err) {
+		// 		return err;
+		// 	}
+		// 	res.json({message: 'Request updated'})
+		// });
+	})	
+
 //add the square api route
 router.route('/payment')
 
