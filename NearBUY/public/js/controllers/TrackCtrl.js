@@ -4,37 +4,64 @@ angular.module('TrackCtrl', []).controller('TrackController', function($scope, $
     //used in search criteria
     $scope.email = "";
 
+
     $scope.findOrders = function() {
-        console.log($scope.email);
+        $http.get('/api/tracking/' + $scope.email).then( function(result) {
+            var promises = [];
 
-        //nested http calls 
-        $http.get('/api/tracking/' + $scope.email)
-        .then(function (result) {
+            $q.all(promises).then(function(){
+                $scope.searchResults = result;
 
-            $scope.searchResults = result.data;
-            console.log($scope.searchResults);
-            //call to yelp
-            return $http.get('/api/search_results/' + $scope.searchResults[0].business_id);
-            }).then(function (result) {
-                console.log(result);
-        });
+            })
+
+            $scope.searchResults = result.data; //contains array of request
+            console.log("search: " + $scope.searchResults); //arra
+
+            $scope.businesses = [];
+
+            for (var i = result.data.length - 1; i >= 0; i--) {
+                (function(i) {
+                    promises.push($http.get('/api/search_results/' + result.data[i].business_id)
+                        .then(function(response) {
+                            // console.log(response);
+                            $scope.businesses.push(response.data);
+                        }));
+                })(i)
+            }
+            console.log($scope.businesses);
+            ;
+
+        })
     }
 
+        // "working attempt"
+        // //nested http calls 
+        // $http.get('/api/tracking/' + $scope.email)
+        // .then(function (result) {
 
+        //     $scope.orderResults = result.data;
+        //     console.log($scope.orderResults);
+
+        //     // for (var i=0; i < $scope.orderResults.length; i++ ) {
+        //     //     $http.get('/api/search_results/' + $scope.orderResults[i].business_id).
+        //     //     then(function (result) {
+
+        //     //     });
+        //     // }
+        //     //call to yelp
+        //     return $http.get('/api/search_results/' + $scope.orderResults[0].business_id);
+        //     }).then(function (result) {
+        //         console.log(result.data);
+        //         $scope.businessInfo = result.data
+        // });
+
+    //not using this
     // $scope.findBusiness = function(id) {
-
-    //     $http({
-    //         url: '/search_results/' + id,
-    //         method: "GET"
-    //     }).then(function successCallback(response) {
-    //         console.log(response);
-    //         console.log("successful yelp GET");
-    //     }, function errorCallback(response) {
-    //         console.log(response);
-    //         console.log("error yelp GET");
+    //     return $http.get('/api/search_results/' + $scope.orderResults[0].business_id);
+    //         }).then(function (result) {
+    //             console.log(result.data);
+    //             $scope.businessInfo = result.data
     //     });
-
-    //     return id
     // }
 
 
