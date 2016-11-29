@@ -115,6 +115,29 @@ router.route('/search_results/:address/:keywords')
 		);
 	})
 
+router.route('/search_results/:business_id')
+
+	//get the results of the query
+	.get(function(req, res) {
+		var yelp = new Yelp({
+			  consumer_key: keys.yelp_consumer_key,
+			  consumer_secret: keys.yelp_consumer_secret,
+			  token: keys.token,
+			  token_secret: keys.token_secret
+		})
+
+		yelp.business(req.params.business_id)
+			.then(function (data) {
+		  		res.json(data);
+		  		console.log("Yelp succeeded");
+			})
+			.catch(function (err) {
+		  		console.error(err);
+		  		console.log("Yelp failed");
+			}
+		);
+	})
+
 //find available requests in the database by city and state
 router.route('/find_results/:city/:state')
 	.get(function(req, res){
