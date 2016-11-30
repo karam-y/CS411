@@ -146,7 +146,7 @@ router.route('/find_results/:city/:state')
 				return err;
 			} else {
 				res.json(data);
-				console.log(data);
+				// console.log(data);
 			}
 		});
 	})
@@ -161,7 +161,7 @@ router.route('/find_results/:zipcode')
 				return err;
 			} else {
 				res.json(data);
-				console.log(data);
+				// console.log(data);
 			}
 		});
 	})
@@ -207,9 +207,12 @@ router.route('/accept')
 	})	
 
 // delete/cancel a request
-router.route('/cancel')
+router.route('/cancel/:id')
 	.delete(function(req, res) {
-
+		Request.remove({ _id: req.params.id }, function(err) {
+			if (err) return err;
+			res.json({message: 'Request deleted!'})
+		});
 	})
 
 //add the square api route
@@ -257,7 +260,7 @@ router.route('/payment')
 				delay_capture: true //used to delay the transaction
 			}
 
-			console.log(request_body);
+			// console.log(request_body);
 
 			unirest.post(base_url + '/locations/' + location.id + '/transactions')
 			.headers({
@@ -268,7 +271,6 @@ router.route('/payment')
 			.send(request_body)
 			.end(function(response){
 				if (response.body.errors) {
-					console.log('here');
 					res.json({status:400, errors: response.body.errors})
 				} else {
 					res.json({status:200})
@@ -289,7 +291,7 @@ router.route('/tracking/:email')
 				return err;
 			} else {
 				res.json(data);
-				console.log(data);
+				// console.log(data);
 			}
 		});
 	})
