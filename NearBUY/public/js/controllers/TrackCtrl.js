@@ -37,35 +37,20 @@ angular.module('TrackCtrl', []).controller('TrackController', function($scope, $
         })
     }
 
-        // "working attempt"
-        // //nested http calls 
-        // $http.get('/api/tracking/' + $scope.email)
-        // .then(function (result) {
+    $scope.cancelRequest = function(id) {
+        console.log(id);
 
-        //     $scope.orderResults = result.data;
-        //     console.log($scope.orderResults);
+        $http.delete('/api/cancel/' + id).then(
+            function(response) {
+                console.log(response);
+            },
 
-        //     // for (var i=0; i < $scope.orderResults.length; i++ ) {
-        //     //     $http.get('/api/search_results/' + $scope.orderResults[i].business_id).
-        //     //     then(function (result) {
+            function(response) {
+                console.log(response);
+            }
+        );
 
-        //     //     });
-        //     // }
-        //     //call to yelp
-        //     return $http.get('/api/search_results/' + $scope.orderResults[0].business_id);
-        //     }).then(function (result) {
-        //         console.log(result.data);
-        //         $scope.businessInfo = result.data
-        // });
-
-    //not using this
-    // $scope.findBusiness = function(id) {
-    //     return $http.get('/api/search_results/' + $scope.orderResults[0].business_id);
-    //         }).then(function (result) {
-    //             console.log(result.data);
-    //             $scope.businessInfo = result.data
-    //     });
-    // }
+    }
 
 
 });
