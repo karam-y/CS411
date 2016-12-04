@@ -1,80 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
 
 <!-- sets up angular -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsTAjge0lRGrWRkJvgDbH7s6-OFy7hnRo&libraries=places"></script> -->
 
-<!-- This is the only thing that works to make it pretty -->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v3.9.2, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
-  <meta name="description" content="">
-  <title>Search Page</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
-</head>
-
+  <head>
+    <title>Search for Products/Services</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
 <body>
 
-<!-- fixes the nav bar from blocking the view -->
-<section id="ext_menu-9">
-
-    <nav class="navbar navbar-dropdown navbar-fixed-top">
-        <div class="container">
-
-            <div class="mbr-table">
-                <div class="mbr-table-cell">
-
-                    <div class="navbar-brand">
-                        <a href="https://mobirise.com" class="navbar-logo"><img src="assets/images/logo.png" alt="Mobirise"></a>
-                        <a class="navbar-caption" href="localhost:8080">NearBUY<br></a>
-                    </div>
-
-                </div>
-                <div class="mbr-table-cell">
-
-                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="hamburger-icon"></div>
-                    </button>
-
-                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><a class="nav-link link" href="search.html" aria-expanded="true">Switch Roles</a></li><li class="nav-item"><a class="nav-link link" href="search.html" aria-expanded="true">Search for Products<br></a></li></ul>
-                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="close-icon"></div>
-                    </button>
-
-                </div>
-            </div>
-
+  <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <a href="../index.html" class="logo"><img src="images/logo.png" width="120" height="50"/></a>
+          <nav id="nav">
+            <a href="../index.html">Home</a>
+            <a href="home.html">Roles</a>
+            <a href="tracking.html">Track</a>
+          </nav>
+          <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
-    </nav>
-
-</section>
-<section class="engine"><a rel="external" href="https://mobirise.com">top bootstrap site generator software</a></section><section class="mbr-info mbr-info-extra mbr-section mbr-section-md-padding mbr-after-navbar" id="msg-box1-e" style="background-color: rgb(242, 242, 242); padding-top: 90px; padding-bottom: 90px;">  
-
- <p></p>
+      </header>
   
-<div ng-app="SearchCtrl" ng-controller="SearchController">
-  <div class="jumbotron">
-    <div class="container">
+  
+ <section id="banner">
+        <div class="inner">
+          <div ng-app="SearchCtrl" ng-controller="SearchController">
+            <div class="jumbotron">
+               <div class="container">
 
-      <!-- Search instructions -->
-      <h1>Search</h1>
+               <!-- Search instructions -->
+                <h1>Search</h1>
+                <div class="box">
       <p> 
         This is where you can search nearbuy places to order from. Remember to click on validate to ensure that the
         address you are entering is a valid address.
@@ -98,9 +59,12 @@
         <strong>Changes have been detected please verify address!</strong>
       </div>
       </p> -->
-
+                 </div>
+              </div>
+        </div>
     </div>
-  </div>
+</section>
+   
 
   <!-- output the results below the jumbotron -->
   <div class="well" ng-repeat="x in searchResults">
@@ -122,31 +86,25 @@
     </form>
   </div>
 </div>
+<!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <div class="copyright">
+            Copyright (c) 2016 NearBUY
+          </div>
 
-<script type="text/javascript" src="../js/app.js"></script>
-<script type="text/javascript" src="../js/appRoutes.js"></script>
-<script type="text/javascript" src="../js/app.js"></script>
-<script type="text/javascript" src="../js/controllers/SearchCtrl.js"></script>
-<script type="text/javascript" src="../js/services/SearchService.js"></script>
-<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-a" style="background-color: rgb(50, 50, 50); padding-top: 1.75rem; padding-bottom: 1.75rem;">
-    
-    <div class="container">
-        <p class="text-xs-center">Copyright (c) 2016 NearBUY<br><br></p>
-    </div>
-</footer>
+        </div>
+      </footer>
 
 
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smooth-scroll/SmoothScroll.js"></script>
-  <script src="assets/viewportChecker/jquery.viewportchecker.js"></script>
-  <script src="assets/dropdown/js/script.min.js"></script>
-  <script src="assets/touchSwipe/jquery.touchSwipe.min.js"></script>
-  <script src="assets/jarallax/jarallax.js"></script>
-  <script src="assets/theme/js/script.js"></script>
+  <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+      <!-- ANGULAR CUSTOM -->   
+      <script type="text/javascript" src="../js/appRoutes.js"></script>    
+      <script type="text/javascript" src="../js/app.js"></script>
   
-  
-  <input name="animation" type="hidden">
   </body>
 </html>
