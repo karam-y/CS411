@@ -1,168 +1,88 @@
 <!DOCTYPE html>
 <html>
-<head>
 
 <!-- sets up angular -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsTAjge0lRGrWRkJvgDbH7s6-OFy7hnRo&libraries=places"></script> -->
+  <head>
+    <title>Order Form</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
 
-<!-- This is the only thing that works to make it pretty -->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
+  <body class="subpage">
+    <div ng-app="OrderCtrl" ng-controller="OrderController">
+  <!-- Header -->
+    <header id="header">
+      <div class="inner">
+        <a href="../index.html" class="logo"><img src="images/logo.png" width="120" height="50"/></a>
+        <nav id="nav">
+          <a href="../index.html">Home</a>
+          <a href="home.html">Roles</a>
+          <a href="tracking.html">Track</a>
+          <a href="manage.html">Manage Deliveries</a>
+        </nav>
+        <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+      </div>
+    </header>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v3.9.2, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
-  <meta name="description" content="">
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-</head>
-  <body>
-<section id="ext_menu-i">
+    <!-- Three -->
+    <section id="three" class="wrapper">
+      <div class="inner">
+        <header class="align-center">
+          <h2>Order From </h2><h2 id="here"></h2>
+        </header>
+      </div>
 
-    <nav class="navbar navbar-dropdown navbar-fixed-top">
-        <div class="container">
+      <h3> Shopping list </h3>
+      Please enter in a shopping list below:</br>
 
-            <div class="mbr-table">
-                <div class="mbr-table-cell">
-
-                    <div class="navbar-brand">
-                        <a href="localhost:8080" class="navbar-logo"><img src="assets/images/logo.png" alt="NearBUY"></a>
-                        <a class="navbar-caption" href="localhost:8080">NearBUY<br></a>
-                    </div>
-
-                </div>
-                <div class="mbr-table-cell">
-
-                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="hamburger-icon"></div>
-                    </button>
-
-                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><a class="nav-link link" href="search.html" aria-expanded="true">Switch Roles</a></li><li class="nav-item"><a class="nav-link link" href="search.html" aria-expanded="true">Search for Products<br></a></li></ul>
-                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="close-icon"></div>
-                    </button>
-
-                </div>
-            </div>
-
-        </div>
-    </nav>
-
-</section>
-<section class="engine"><a rel="external" href="https://mobirise.com">best drag and drop web design software download</a></section><section class="mbr-section mbr-section-hero mbr-section-full mbr-after-navbar" id="header5-m" style="background-color: rgb(239, 239, 239);">
-
-    
-
-    <div class="mbr-table-cell">
-
-        <div class="container">
-            <div class="row">
-                <div class="mbr-section col-md-10">
-
-                    <h1 class="mbr-section-title display-1">Order</h1>
-                    <p class="mbr-section-lead lead">Fill out the form below!.<br>A seller will deliver as soon as possible!</p>
-                   
-                </div>
-            </div>
-        </div>
+    <div>
+      <input type="text" ng-model="newItem" placeholder="Enter in an item" required />
+      <p><button ng-click="addItem()" class="btn btn-primary">Add</button></p>
     </div>
-</section>  
-    
-<body>
-<!-- fixes the nav bar from blocking the view -->
-<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
 
-
-<!-- make a navigation bar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="../index.html">NearBuy</a>
+    Please enter the amount you are willing to pay:</br>
+    <div>
+      <input type="text" id="price" placeholder="Amount (to the nearest dollar)" ng-model="price" required>
+      <button type="button" ng-click="updateTotal()">Update</button>
     </div>
-  </div>
-</nav>
-<p></p>
-<div ng-app="OrderCtrl" ng-controller="OrderController">
-  <div class="jumbotron">
-    <div class="container">
 
+    <div class="table-wrapper">
+      <table class="alt">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+          </tr>
+        </thead>
 
-      <!-- Search instructions -->
-      <h1>Order form: </h1><h1 id="here"></h1>
-      <p> 
-        To order from this place enter in the list below.
-      </p>
+        <tbody>
+            <tr ng-repeat="item in list">
+              <td>{{ item.name }}</td>
+              <td><button type="button" class="button alt small" ng-click="deleteItem($index)">Remove</a></td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="1"></td>
+            <td>Total Cost: ${{ total }}</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-  </div>
 
-  <h3> Shopping list </h3>
-  <p>Please enter in a shopping list below</p>
+    Enter in any additional comments on your products below:</br>
+    <textarea name="myTextBox" cols="50" rows="5" ng-model="notes">
+      Enter additional info...
+    </textarea>
 
-<div>
-    <input type="text" ng-model="newItem" placeholder="Enter in an item" required />
-    <p><button ng-click="addItem()" class="btn btn-primary">Add</button></p>
-
-  <ul>
-    <li ng-repeat="item in list">
-      <span>{{ item.name }}</span>
-      <button type="button" class="btn btn-xs btn-danger" ng-click="deleteItem($index)">Remove</button>
-      <!-- <span class="fa fa-close" ng-click="deleteItem($index)"></span> -->
-    </li>
-  </ul>
-
-  <p>Enter in any additional notes about the items below
-  <form>
-  <textarea name="myTextBox" cols="50" rows="5" ng-model="notes">
-  Enter additional info...
-  </textarea>
-  <br />
-  </form>
-
-
-  <h3> Enter in a price </h3>
-  <p>Please enter a price you are willing to pay for all these items</p>
-
-  <div class="input-group">
-    <span class="input-group-addon">$</span>
-    <input class="form-control" id="price" aria-label="Amount (to the nearest dollar)" ng-model="price" required>
-    <span class="input-group-addon">.00</span>
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="updateTotal()">Update</button>
-    </span>
-  </div>
-
-  <h3>Order Review</h3>
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th>Item</th>
-    </tr>
-    </thead>
-
-    <tbody>
-      <tr ng-repeat="item in list">
-        <td>{{ item.name }}</td>
-      </tr>
-      <tr>
-        <td><strong>Total Cost: ${{ total }}</strong></td>
-    </tbody>
-
-  </table>
+  </section>
 
   <h3>Payment and Delivery</h3>
-  <p>Please enter payment and delivery details below.</p>
+  Please enter payment and delivery details below:</br>
 
   <!-- this for the square payment form -->
   <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
@@ -187,12 +107,12 @@
     }
   </style>
 
-<body>
-
 <form id="payment-form" onsubmit="return paymentFormSubmit()"> 
 
-  <label>Email</label>
-  <input type="email" id="email" name="email"  ng-model="email" placeholder="Email" required/>
+  <input type="text" id="email" name="email"  ng-model="email" placeholder="Email" required/>
+  <input type="text" id="name" name="name" ng-model="name" placeholder="Name" required/>
+  <input type="text" id="number" name="number" ng-model="number" placeholder="Phone Number" required/>
+
 
   <h4>Delivery Address</h4>
 
@@ -411,29 +331,27 @@
 
 </script>
 
-<script type="text/javascript" src="../js/app.js"></script>
-<script type="text/javascript" src="../js/appRoutes.js"></script>
-<script type="text/javascript" src="../js/app.js"></script>
-<script type="text/javascript" src="../js/controllers/OrderCtrl.js"></script>
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <div class="copyright">
+          Copyright (c) 2016 NearBUY
+        </div>
 
-<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-j" style="background-color: rgb(50, 50, 50); padding-top: 1.75rem; padding-bottom: 1.75rem;">
-    
-    <div class="container">
-        <p class="text-xs-center">Copyright (c) 2016 NearBUY<br><br></p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- ANGULAR CUSTOM -->   
+    <script type="text/javascript" src="../js/appRoutes.js"></script>    
+    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="../js/controllers/OrderCtrl.js"></script>
+
     </div>
-</footer>
 
-
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smooth-scroll/SmoothScroll.js"></script>
-  <script src="assets/viewportChecker/jquery.viewportchecker.js"></script>
-  <script src="assets/dropdown/js/script.min.js"></script>
-  <script src="assets/touchSwipe/jquery.touchSwipe.min.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  
-  
-  <input name="animation" type="hidden">
   </body>
 </html>

@@ -40,6 +40,8 @@ angular.module('OrderCtrl', []).controller('OrderController', function($scope, $
 	$scope.state = '';
 	$scope.zip = '';
 	$scope.email = '';
+	$scope.name = '';
+	$scope.number = '';
 
 
 	console.log($scope.business_id);

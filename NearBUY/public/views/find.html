@@ -22,6 +22,7 @@
 				<a href="../index.html">Home</a>
 				<a href="home.html">Roles</a>
 				<a href="tracking.html">Track</a>
+				<a href="manage.html">Manage Deliveries</a>
 			</nav>
 			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 		</div>
@@ -146,7 +147,7 @@
 
 		<form method="link"> <!-- do this part (put action)--> 
 			<input type="text" placeholder="Enter in an email" ng-model="email" required>
-			<button type="submit" ng-click="acceptRequest(request._id, email)">Accept Request»</button> <!-- do a ng-click here -->
+			<button type="submit" ng-click="acceptRequest(request._id, email)" onClick="window.location='manage.html'">Accept Request»</button> <!-- do a ng-click here -->
 		</form>
 	</div>
 
