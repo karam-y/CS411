@@ -13,6 +13,7 @@
   </head>
 <body>
 
+<div ng-app="SearchCtrl" ng-controller="SearchController"> 
   <!-- Header -->
       <header id="header">
         <div class="inner">
@@ -26,60 +27,56 @@
         </div>
       </header>
   
-  
- <section id="banner">
-        <div class="inner">
-          <div ng-app="SearchCtrl" ng-controller="SearchController">
-            <div class="jumbotron">
-               <div class="container">
+     <section id="banner">
+      <div class="inner">
+        <div class="jumbotron">
+          <div class="container">
 
-               <!-- Search instructions -->
-                <h1>Search</h1>
-                <div class="box">
-      <p> 
-        Search for places NearBUY to order from! 
-      </p>
-      <form>
+           <!-- Search instructions -->
+            <h1>Search</h1>
+            <div class="box">
+              <p> 
+                Search for places NearBUY to order from! 
+              </p>
+              <form>
+                <!-- this is to search topics -->
+                  <p><input type="text" placeholder="Search for places/things to buy" ng-model="keywords" class="form-control" ng-required="required"></p>
 
-      <!-- this is to search topics -->
-        <p><input type="text" placeholder="Search for places/things to buy" ng-model="keywords" class="form-control" ng-required="required"></p>
+                <!-- this is to enter an address -->
+                  <p>
+                    <input type="text" class="form-control" placeholder="Enter in an address" placeholder="Enter in an address" ng-required="required" ng-model="address">
+                  </p>
 
-      <!-- this is to enter an address -->
-        <p>
-          <input type="text" class="form-control" placeholder="Enter in an address" placeholder="Enter in an address" ng-required="required" ng-model="address">
-        </p>
-
-        <!-- this is the button to submit -->
-          <button id="getResults" ng-click="submit()">Find places near me!</button>
-      </form>
-                 </div>
-              </div>
+                <!-- this is the button to submit -->
+                  <button id="getResults" ng-click="submit()">Find places near me!</button>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
-   </div>
-</section>
-   
-
-  <!-- output the results below the jumbotron -->
-  <div class="well" ng-repeat="x in searchResults">
-    <h2>{{ x.name }}</h2>
-      <p><strong>Business Address<strong></br>
-      <div ng-repeat="y in x.location.display_address">
-        {{ y }}</br>
       </div>
-      </p>
-      <!-- <p>
-        {{ x.formatted_address }}
-      </p>
-      <p>
-        {{ "Rating: " + x.rating }}
-      </p> -->
-    <form method="link" action="order.html">
-      <input type="hidden" value="{{ x.id }}" name="business_id">
-      <button type="submit">Order Here »</button>
-    </form>
-  </div>
-<!-- Footer -->
+
+
+      </section>
+
+      <!-- output the results below the jumbotron -->
+      <div class="well" ng-repeat="x in searchResults">
+        <h2>{{ x.name }}</h2>
+          <strong>Business Address<strong></br>
+          <img src={{x.image_url}} alt="picture"><!-- pls help -->
+          <div ng-repeat="y in x.location.display_address">
+            {{ y }}</br>
+          </div>
+            Phone: {{ x.display_phone }}</br>
+            {{ "Rating: " + x.rating }} of 5</br>
+            Open: {{!x.is_closed}}</br>
+            <a href="https://www.yelp.com/biz/{{x.id}}" target="_blank">More Reviews on Yelp</a></br>
+        <form method="link" action="order.html">
+          <input type="hidden" value="{{ x.id }}" name="business_id">
+          <button type="submit">Order Here »</button>
+        </form>
+      </div>
+
+      <!-- Footer -->
       <footer id="footer">
         <div class="inner">
           <div class="copyright">
@@ -88,6 +85,7 @@
 
         </div>
       </footer>
+</div>
 
 
   <!-- Scripts -->
@@ -98,6 +96,7 @@
       <!-- ANGULAR CUSTOM -->   
       <script type="text/javascript" src="../js/appRoutes.js"></script>    
       <script type="text/javascript" src="../js/app.js"></script>
+      <script type="text/javascript" src="../js/controllers/SearchCtrl.js"></script>
   
   </body>
 </html>
