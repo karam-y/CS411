@@ -1,38 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
 
 <!-- sets up angular -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsTAjge0lRGrWRkJvgDbH7s6-OFy7hnRo&libraries=places"></script> -->
 
-<!-- This is the only thing that works to make it pretty -->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
- <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v3.9.2, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
-  <meta name="description" content="Choose your role!">
-  <title>Welcome!</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="assets/et-line-font-plugin/style.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
-</head>
+  <head>
+    <title>Choose a Role</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
 <body>
-<section id="ext_menu-3">
+
+  <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <a href="../index.html" class="logo"><img src="images/logo.png" width="120" height="50"/></a>
+          <nav id="nav">
+            <a href="../index.html">Home</a>
+            <a href="home.html">Roles</a>
+            <a href="tracking.html">Track</a>
+          </nav>
+          <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+      </header>
+
+
+      <!-- Banner -->
+      <section id="banner">
+        <div class="inner">
+          <header>
+            <h1>Choose a Role</h1>
+          </header>
+
+          <div class="flex ">
+
+            <div class="image">
+              <center>
+              <img src="images/delivery.png" alt="pic" width="180" height="180" /></br>
+              <h3>I want to deliver products.</h3></br>
+              <a href="find.html" class="button">Seller</a>
+              </center>
+            </div>
+
+            <div>
+              <center>
+              <img src="images/cart.png" alt="pic" width="200" height="200" /></br>
+              <h3>I want to order products.</h3></br>
+              <a href="tracking.html" class="button">Buyer</a>
+              </center>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+<!-- <section id="ext_menu-3">
 
     <nav class="navbar navbar-dropdown navbar-fixed-top">
         <div class="container">
@@ -101,26 +125,27 @@
         
         
     </div>
-</section>
+</section> -->
 
-<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-5" style="background-color: rgb(50, 50, 50); padding-top: 1.75rem; padding-bottom: 1.75rem;">
-    
-    <div class="container">
-        <p class="text-xs-center">Copyright (c) 2016 NearBUY<br><br></p>
-    </div>
-</footer>
+<!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <div class="copyright">
+            Copyright (c) 2016 NearBUY
+          </div>
+
+        </div>
+      </footer>
 
 
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smooth-scroll/SmoothScroll.js"></script>
-  <script src="assets/viewportChecker/jquery.viewportchecker.js"></script>
-  <script src="assets/dropdown/js/script.min.js"></script>
-  <script src="assets/touchSwipe/jquery.touchSwipe.min.js"></script>
-  <script src="assets/theme/js/script.js"></script>
+  <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+      <!-- ANGULAR CUSTOM -->   
+      <script type="text/javascript" src="../js/appRoutes.js"></script>    
+      <script type="text/javascript" src="../js/app.js"></script>
   
-  
-  <input name="animation" type="hidden">
   </body>
 </html>
