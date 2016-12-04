@@ -126,14 +126,13 @@
 			{{ y }}</br>
 		</div>
 		Open: {{!request.is_closed}}</br>
+  		Phone: {{ request.display_phone }}</br>
 
   		<strong>Delivery Address</strong></br>
   		{{ request.delivery_address }}</br>
-  		{{ request.delivery_city }}</br>
-  		{{ request.delivery_state }}</br>
-  		{{ request.delivery_zip }}</br>
-  		{{ request.buyer_id }}</br>
-
+  		{{ request.delivery_city }}, {{ request.delivery_state }} {{ request.delivery_zip }}</br>
+  		
+  		Buyer: {{ request.buyer_id }}</br>
 
   		<strong>Requested Items</strong>
   		<div ng-repeat="x in request.items">
