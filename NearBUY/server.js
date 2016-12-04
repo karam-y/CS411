@@ -286,7 +286,21 @@ router.route('/tracking/:email')
 	.get(function(req, res){
 
 		console.log(req.params.email);
-		Request.find({ buyer_id : req.params.email }).exec( function(err, data) {
+		Request.find({ buyer_id : req.params.email }).sort({time: -1}).exec( function(err, data) {
+			if (err) {
+				return err;
+			} else {
+				res.json(data);
+				// console.log(data);
+			}
+		});
+	})
+
+router.route('/manage/:email')
+	.get(function(req, res){
+
+		console.log(req.params.email);
+		Request.find({ seller_id : req.params.email }).sort({time: -1}).exec( function(err, data) {
 			if (err) {
 				return err;
 			} else {
