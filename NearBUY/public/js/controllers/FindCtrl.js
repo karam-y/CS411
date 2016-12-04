@@ -11,8 +11,29 @@ angular.module('FindCtrl', []).controller('FindController', function($scope, $ht
 		    // this callback will be called asynchronously
 		    // when the response is available
 		    $scope.searchResults = response.data;
-		    console.log(response);
-		    console.log("successful GET");
+
+		    var promises = [];
+
+            $q.all(promises).then(function(){
+                $scope.searchResults = response;
+
+            })
+
+		    $scope.requests = [];
+
+		    for (var i = response.data.length - 1; i >= 0; i--) {
+                (function(i) {
+                    promises.push($http.get('/api/search_results/' + response.data[i].business_id)
+                        .then(function(response2) {
+                            // console.log(response);
+                            var merged_results = angular.extend({}, response.data[i], response2.data);
+                            // console.log(result.data[i]);
+                            $scope.requests.push(merged_results);
+                        }));
+                })(i)
+            }
+            console.log($scope.requests);
+            ;
 		}, function errorCallback(response) {
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.
@@ -29,8 +50,29 @@ angular.module('FindCtrl', []).controller('FindController', function($scope, $ht
 		    // this callback will be called asynchronously
 		    // when the response is available
 		    $scope.searchResults = response.data;
-		    console.log(response);
-		    console.log("successful GET");
+
+		    var promises = [];
+
+            $q.all(promises).then(function(){
+                $scope.searchResults = response;
+
+            })
+
+		    $scope.requests = [];
+
+		    for (var i = response.data.length - 1; i >= 0; i--) {
+                (function(i) {
+                    promises.push($http.get('/api/search_results/' + response.data[i].business_id)
+                        .then(function(response2) {
+                            // console.log(response);
+                            var merged_results = angular.extend({}, response.data[i], response2.data);
+                            // console.log(result.data[i]);
+                            $scope.requests.push(merged_results);
+                        }));
+                })(i)
+            }
+            console.log($scope.requests);
+            ;
 		}, function errorCallback(response) {
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.

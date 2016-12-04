@@ -12,172 +12,164 @@
   </head>
 	
 <body>
+
+<div ng-app="FindCtrl" ng-controller="FindController">
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="../index.html" class="logo"><img src="images/logo.png" width="120" height="50"/></a>
+			<nav id="nav">
+				<a href="../index.html">Home</a>
+				<a href="home.html">Roles</a>
+				<a href="tracking.html">Track</a>
+			</nav>
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
 	
-  <!-- Header -->
-      <header id="header">
-        <div class="inner">
-          <a href="../index.html" class="logo"><img src="images/logo.png" width="120" height="50"/></a>
-          <nav id="nav">
-            <a href="../index.html">Home</a>
-            <a href="home.html">Roles</a>
-            <a href="tracking.html">Track</a>
-          </nav>
-          <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-        </div>
-      </header>
-	
-      <section id="banner">
-        <div class="inner">
-	    <div ng-app="FindCtrl" ng-controller="FindController">
-	      <div class="jumbotron">
-	        <div class="container">
-	          <!-- Search instructions -->
-	          <h1>Find Requests</h1>
-		   <div class ="box">
-	          <p> 
-	            Enter in city and state OR zipcode to find requests.
-	          </p>
+	<section id="banner">
+		<div class="inner">
+			<div class="jumbotron">
+				<div class="container">
+					<!-- Search instructions -->
+					<h1>Find Requests</h1>
+					<div class ="box">
+						<p> 
+							Enter in city and state OR zipcode to find requests.
+						</p>
+					      <!-- to search by city or state -->
+					    <form>
+					        <input type="text" placeholder="Enter in City" ng-model= "city" name="state" class="form-control" required>
+
+					        <label>State</label>
+					        <select id="state" name="state" ng-model="state" required>
+					        <option value="AL">Alabama</option>
+					        <option value="AK">Alaska</option>
+					        <option value="AZ">Arizona</option>
+					        <option value="AR">Arkansas</option>
+					        <option value="CA">California</option>
+					        <option value="CO">Colorado</option>
+					        <option value="CT">Connecticut</option>
+					        <option value="DE">Delaware</option>
+					        <option value="DC">District of Columbia</option>
+					        <option value="FL">Florida</option>
+					        <option value="GA">Georgia</option>
+					        <option value="HI">Hawaii</option>
+					        <option value="ID">Idaho</option>
+					        <option value="IL">Illinois</option>
+					        <option value="IN">Indiana</option>
+					        <option value="IA">Iowa</option>
+					        <option value="KS">Kansas</option>
+					        <option value="KY">Kentucky</option>
+					        <option value="LA">Louisiana</option>
+					        <option value="ME">Maine</option>
+					        <option value="MD">Maryland</option>
+					        <option value="MA">Massachusetts</option>
+					        <option value="MI">Michigan</option>
+					        <option value="MN">Minnesota</option>
+					        <option value="MS">Mississippi</option>
+					        <option value="MO">Missouri</option>
+					        <option value="MT">Montana</option>
+					        <option value="NE">Nebraska</option>
+					        <option value="NV">Nevada</option>
+					        <option value="NH">New Hampshire</option>
+					        <option value="NJ">New Jersey</option>
+					        <option value="NM">New Mexico</option>
+					        <option value="NY">New York</option>
+					        <option value="NC">North Carolina</option>
+					        <option value="ND">North Dakota</option>
+					        <option value="OH">Ohio</option>
+					        <option value="OK">Oklahoma</option>
+					        <option value="OR">Oregon</option>
+					        <option value="PA">Pennsylvania</option>
+					        <option value="RI">Rhode Island</option>
+					        <option value="SC">South Carolina</option>
+					        <option value="SD">South Dakota</option>
+					        <option value="TN">Tennessee</option>
+					        <option value="TX">Texas</option>
+					        <option value="UT">Utah</option>
+					        <option value="VT">Vermont</option>
+					        <option value="VA">Virginia</option>
+					        <option value="WA">Washington</option>
+					        <option value="WV">West Virginia</option>
+					        <option value="WI">Wisconsin</option>
+					        <option value="WY">Wyoming</option>
+					        </select>
+
+					        <!-- this is the button to submit -->
+					        <button id="getResults" ng-click="submitCityState()">Find requests near me!</button>
+
+					    </form>
+
+        				<p>OR</p>
+
+				        <form>
+				            <input type="text" placeholder="Enter in Zipcode" ng-model="zipcode" name="zipcode" class="form-control" required>
+
+				            <!-- this is the button to submit -->
+				            <button id="getResults" ng-click="submitZipcode()">Find requests near me!</button>
+				        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    </section>
+
+	    <!-- output the results below the jumbotron -->
+	<div class="well" ng-repeat="request in requests">
+		<h2>{{ request.name }}</h2>
+		<img src={{request.image_url}} alt="picture"></br>
+		<strong>Business Address</strong></br>
+		<div ng-repeat="y in request.location.display_address">
+			{{ y }}</br>
+		</div>
+		Open: {{!request.is_closed}}</br>
+
+  		<strong>Delivery Address</strong></br>
+  		{{ request.delivery_address }}</br>
+  		{{ request.delivery_city }}</br>
+  		{{ request.delivery_state }}</br>
+  		{{ request.delivery_zip }}</br>
+  		{{ request.buyer_id }}</br>
 
 
-	          <!-- to search by city or state -->
-	        <form>
-	            <input type="text" placeholder="Enter in City" ng-model= "city" name="state" class="form-control" required>
+  		<strong>Requested Items</strong>
+  		<div ng-repeat="x in request.items">
+      		{{ x.name }}</br>
+  		</div>
+
+		<strong>Additional Notes</strong></br>
+		{{ request.notes }}</br>
+
+  		<strong>Offer: </strong> {{request.price }} </br>
+
+		<form method="link"> <!-- do this part (put action)--> 
+			<input type="text" placeholder="Enter in an email" ng-model="email" required>
+			<button type="submit" ng-click="acceptRequest(request._id, email)">Accept Request»</button> <!-- do a ng-click here -->
+		</form>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<div class="copyright">
+				Copyright (c) 2016 NearBUY
+			</div>
+
+		</div>
+	</footer>
 
 
-	            <label>State</label>
-	            <select id="state" name="state" ng-model="state" required>
-	            <option value="AL">Alabama</option>
-	            <option value="AK">Alaska</option>
-	            <option value="AZ">Arizona</option>
-	            <option value="AR">Arkansas</option>
-	            <option value="CA">California</option>
-	            <option value="CO">Colorado</option>
-	            <option value="CT">Connecticut</option>
-	            <option value="DE">Delaware</option>
-	            <option value="DC">District of Columbia</option>
-	            <option value="FL">Florida</option>
-	            <option value="GA">Georgia</option>
-	            <option value="HI">Hawaii</option>
-	            <option value="ID">Idaho</option>
-	            <option value="IL">Illinois</option>
-	            <option value="IN">Indiana</option>
-	            <option value="IA">Iowa</option>
-	            <option value="KS">Kansas</option>
-	            <option value="KY">Kentucky</option>
-	            <option value="LA">Louisiana</option>
-	            <option value="ME">Maine</option>
-	            <option value="MD">Maryland</option>
-	            <option value="MA">Massachusetts</option>
-	            <option value="MI">Michigan</option>
-	            <option value="MN">Minnesota</option>
-	            <option value="MS">Mississippi</option>
-	            <option value="MO">Missouri</option>
-	            <option value="MT">Montana</option>
-	            <option value="NE">Nebraska</option>
-	            <option value="NV">Nevada</option>
-	            <option value="NH">New Hampshire</option>
-	            <option value="NJ">New Jersey</option>
-	            <option value="NM">New Mexico</option>
-	            <option value="NY">New York</option>
-	            <option value="NC">North Carolina</option>
-	            <option value="ND">North Dakota</option>
-	            <option value="OH">Ohio</option>
-	            <option value="OK">Oklahoma</option>
-	            <option value="OR">Oregon</option>
-	            <option value="PA">Pennsylvania</option>
-	            <option value="RI">Rhode Island</option>
-	            <option value="SC">South Carolina</option>
-	            <option value="SD">South Dakota</option>
-	            <option value="TN">Tennessee</option>
-	            <option value="TX">Texas</option>
-	            <option value="UT">Utah</option>
-	            <option value="VT">Vermont</option>
-	            <option value="VA">Virginia</option>
-	            <option value="WA">Washington</option>
-	            <option value="WV">West Virginia</option>
-	            <option value="WI">Wisconsin</option>
-	            <option value="WY">Wyoming</option>
-	            </select>
-
-
-	            <!-- this is the button to submit -->
-	            <button id="getResults" ng-click="submitCityState()">Find requests near me!</button>
-	        </form>
-
-
-	        <p></p>
-	        <p>OR</p>
-
-
-	        <form>
-	            <input type="text" placeholder="Enter in Zipcode" ng-model="zipcode" name="zipcode" class="form-control" required>
-
-
-	            <!-- this is the button to submit -->
-	            <button id="getResults" ng-click="submitZipcode()">Find requests near me!</button>
-	        </form>
-
-
-	       		 </div>
-	        	</div>
-		    </div>
-		   </div>
-		    </section>
-
-	            <!-- output the results below the jumbotron -->
-	      <div class="well" ng-repeat="request in searchResults">
-	        <h2>Name of business request</h2>
-	          <p><strong>Delivery Address</strong></br>
-	          {{ request.delivery_address }}</br>
-	          {{ request.delivery_city }}</br>
-	          {{ request.delivery_state }}</br>
-	          {{ request.delivery_zip }} </p>
-
-
-	          <p><strong>Requested Items</strong>
-	          <div ng-repeat="x in request.items">
-	              {{ x.name }}</br>
-	          </div>
-	          <p>
-
-
-	          <p><strong>Additional Notes</strong></br>
-	           {{ request.notes }}</br>
-	          </p>
-
-
-	          <p><strong>Offer: </strong> {{request.price }} </p>
-	          <!-- <p>
-	            {{ x.formatted_address }}
-	          </p>
-	          <p>
-	            {{ "Rating: " + x.rating }}
-	          </p> -->
-	        <form method="link"> <!-- do this part (put action)--> 
-	          <input type="text" placeholder="Enter in an email" ng-model="email" required>
-	          <button type="submit" ng-click="acceptRequest(request._id, email)">Accept Request»</button> <!-- do a ng-click here -->
-	        </form>
-</div>
-<!--</section>-->
-<!-- Footer -->
-      <footer id="footer">
-        <div class="inner">
-          <div class="copyright">
-            Copyright (c) 2016 NearBUY
-          </div>
-
-        </div>
-      </footer>
-
-
-  <!-- Scripts -->
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/skel.min.js"></script>
-      <script src="assets/js/util.js"></script>
-      <script src="assets/js/main.js"></script>
-      <!-- ANGULAR CUSTOM -->   
-      <script type="text/javascript" src="../js/appRoutes.js"></script>    
-      <script type="text/javascript" src="../js/app.js"></script>
+  	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<!-- ANGULAR CUSTOM -->   
+	<script type="text/javascript" src="../js/appRoutes.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="../js/controllers/FindCtrl.js"></script>
   
   </body>
 </html>
