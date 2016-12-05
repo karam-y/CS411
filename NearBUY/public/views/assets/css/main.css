@@ -2149,12 +2149,13 @@
 		opacity: 1.0;
 	}
 
+
 /* Box */
 
 	.box {
-		border: solid 1px #dbdbdb;
+		border: solid 2px #dbdbdb;
 		margin-bottom: 2em;
-		padding: 1.5em;
+		<!—padding: 1.5em;—>
 	}
 
 		.box > :last-child,
