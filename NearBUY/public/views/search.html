@@ -59,8 +59,10 @@
 
       </section>
 
+      <section id="three" class="wrapper align-center">
+
       <!-- output the results below the jumbotron -->
-      <div class="well" ng-repeat="x in searchResults">
+      <div class="box" ng-repeat="x in searchResults">
         <h2>{{ x.name }}</h2>
           <img src={{x.image_url}} alt="picture"></br>
           <strong>Business Address<strong></br>
@@ -76,6 +78,8 @@
           <button type="submit">Order Here »</button>
         </form>
       </div>
+
+    </section>
 
       <!-- Footer -->
       <footer id="footer">

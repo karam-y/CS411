@@ -82,12 +82,11 @@
               {{y}}</br>
             </div>
 
-            <h1>Delivery Details</h1>
-            <strong>Delivery Address</strong></br>
+            <h1>Delivery Address</h1></br>
             {{x.delivery_address}}</br>
             {{x.delivery_city }}, {{x.delivery_state}} {{x.delivery_zip}}</br>
 
-            <strong>Order Details</strong>
+            <h1>Order Details</h1>
             <div ng-repeat="y in x.items">
               {{ y.name }}</br>
             </div>

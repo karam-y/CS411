@@ -117,8 +117,10 @@
 
     </section>
 
+    <section id="three" class="wrapper align-center">
+
 	    <!-- output the results below the jumbotron -->
-	<div class="well" ng-repeat="request in requests">
+	<div class="box" ng-repeat="request in requests">
 		<h2>{{ request.name }}</h2>
 		<img src={{request.image_url}} alt="picture"></br>
 		<strong>Business Address</strong></br>
@@ -149,6 +151,8 @@
 			<button type="submit" ng-click="acceptRequest(request._id, email)" onClick="window.location='manage.html'">Accept Request»</button> <!-- do a ng-click here -->
 		</form>
 	</div>
+
+</section>
 
 	<!-- Footer -->
 	<footer id="footer">
