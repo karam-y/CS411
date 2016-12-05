@@ -75,7 +75,7 @@
 
       <section id="three" class="wrapper align-center">
 
-         <div class="box" ng-repeat="x in businesses">
+         <!--<div class="box" ng-repeat="x in businesses">-->
             <h2>{{ x.name }}</h2>
             <h1>Store Details</h1>
             <div ng-repeat="y in x.location.display_address">
@@ -101,7 +101,7 @@
             <input type="button" value="Cancel Request" class="btn btn-danger" ng-click="cancelRequest(x._id)" onClick="window.location.reload()" ng-show={{x.open}} ></input>
             <p ng-show={{!x.open}}>Request Processed on {{x.time}}!</p>
 
-        </div>
+       <!-- </div> -->
 
 
       </section>
