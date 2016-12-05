@@ -62,8 +62,8 @@
       <!-- output the results below the jumbotron -->
       <div class="well" ng-repeat="x in searchResults">
         <h2>{{ x.name }}</h2>
+          <img src={{x.image_url}} alt="picture"></br>
           <strong>Business Address<strong></br>
-          <img src={{x.image_url}} alt="picture">
           <div ng-repeat="y in x.location.display_address">
             {{ y }}</br>
           </div>
