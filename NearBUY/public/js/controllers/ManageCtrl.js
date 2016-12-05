@@ -36,6 +36,8 @@ angular.module('ManageCtrl', []).controller('ManageController', function($scope,
             ;
 
         })
+
+        window.scrollTo(0, 1000);
     }
 
 });

@@ -35,6 +35,8 @@ angular.module('TrackCtrl', []).controller('TrackController', function($scope, $
             ;
 
         })
+        
+        window.scrollTo(0, 1000);
     }
 
     $scope.cancelRequest = function(id) {

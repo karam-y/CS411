@@ -35,6 +35,8 @@ angular.module('SearchCtrl', []).controller('SearchController', function($scope,
             console.log("error in response");
         });
 
+        window.scrollTo(0, 1000);
+
     }
 
 

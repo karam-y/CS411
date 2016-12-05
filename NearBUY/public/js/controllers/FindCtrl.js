@@ -40,6 +40,8 @@ angular.module('FindCtrl', []).controller('FindController', function($scope, $ht
 		    console.log(response);
 		    console.log("error in GET");
 		});
+
+		window.scrollTo(0, 1000);
 	}
 
 	$scope.submitZipcode = function () {
@@ -79,6 +81,8 @@ angular.module('FindCtrl', []).controller('FindController', function($scope, $ht
 		    console.log(response);
 		    console.log("error in GET");
 		});
+
+		window.scrollTo(0, 1000);
 	}
 
 	$scope.acceptRequest = function(id, seller_id) {
