@@ -1,0 +1,15 @@
+{
+	_id: String, // this is the unique order id for a request
+	open: { type: Boolean, default: true}, // this indicates whether a request has been fulfilled or not
+	items: [], // this contains a list of items the buyer has ordered
+	price: String, // this is the price the buyer is willing to pay the seller
+	notes: String, // this is additional notes specified from the buyer about the order
+	buyer_id: String, // this is the unique buyer email who puts in the order
+	seller_id: String, // this is the unique seller email who accepts the request
+	delivery_address: String, // this is the delivery address for the order
+	delivery_city: String, // this is the delivery city for the order
+	delivery_state: String, // this is the delivery state for the order
+	delivery_zip: String, // this is the delivery zipcode for the order
+	business_id: String, // this is the business_id for where the buyer wants their items from
+	time : { type : Date, default: Date.now } //this is the time stamp from which the order was made
+}
